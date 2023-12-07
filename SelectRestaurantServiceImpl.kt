@@ -3,6 +3,7 @@ package com.sryang.addreview.di.addreview_di
 import com.sryang.addreview.data.SelectRestaurantData
 import com.sryang.addreview.usecase.SelectRestaurantUseCase
 import com.sryang.torang_repository.api.ApiRestaurant
+import com.sryang.torang_repository.data.Filter
 import com.sryang.torang_repository.data.remote.response.RemoteRestaurant
 import dagger.Module
 import dagger.Provides
@@ -15,9 +16,9 @@ class SelectRestaurantServiceImpl {
     @Provides
     fun provideSelectRestaurantService(apiRestaurant: ApiRestaurant): SelectRestaurantUseCase {
         return object : SelectRestaurantUseCase {
-            override suspend fun getRestaurant(): List<SelectRestaurantData> {
-                val result = apiRestaurant.getAllRestaurant(HashMap())
-                return result.stream().map { it.toSelectRestaurantData() }.toList()
+            override suspend fun invoke(keyword: String): List<SelectRestaurantData> {
+                val result = apiRestaurant.getFilterRestaurant(Filter(keyword = keyword))
+                return result.map { it.toSelectRestaurantData() }
             }
 
         }
