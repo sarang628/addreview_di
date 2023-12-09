@@ -4,7 +4,6 @@ import com.sryang.addreview.data.SelectRestaurantData
 import com.sryang.addreview.usecase.SelectRestaurantUseCase
 import com.sryang.torang_repository.api.ApiRestaurant
 import com.sryang.torang_repository.data.Filter
-import com.sryang.torang_repository.data.remote.response.RemoteRestaurant
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -12,7 +11,7 @@ import dagger.hilt.components.SingletonComponent
 
 @InstallIn(SingletonComponent::class)
 @Module
-class SelectRestaurantServiceImpl {
+class SelectRestaurantUseCaseImpl {
     @Provides
     fun provideSelectRestaurantService(apiRestaurant: ApiRestaurant): SelectRestaurantUseCase {
         return object : SelectRestaurantUseCase {
@@ -20,15 +19,6 @@ class SelectRestaurantServiceImpl {
                 val result = apiRestaurant.getFilterRestaurant(Filter(keyword = keyword))
                 return result.map { it.toSelectRestaurantData() }
             }
-
         }
     }
-}
-
-fun RemoteRestaurant.toSelectRestaurantData(): SelectRestaurantData {
-    return SelectRestaurantData(
-        restaurantId = this.restaurantId,
-        restaurantName = this.restaurantName,
-        address = this.address
-    )
 }
