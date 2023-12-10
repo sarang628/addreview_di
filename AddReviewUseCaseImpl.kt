@@ -3,6 +3,7 @@ package com.sryang.addreview.di.addreview_di
 import com.sryang.addreview.usecase.AddReviewUseCase
 import com.sryang.torang_repository.api.ApiReview
 import com.sryang.torang_repository.data.dao.LoggedInUserDao
+import com.sryang.torang_repository.repository.ReviewRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -19,8 +20,7 @@ import java.io.File
 class AddReviewUseCaseImpl {
     @Provides
     fun provideReviewService(
-        apiReview: ApiReview,
-        loggedInUserDao: LoggedInUserDao
+        reviewRepository: ReviewRepository
     ): AddReviewUseCase {
         return object : AddReviewUseCase {
             override suspend fun invoke(
@@ -29,34 +29,13 @@ class AddReviewUseCaseImpl {
                 rating: Float,
                 files: List<String>
             ) {
-                val user = loggedInUserDao.getLoggedInUser1() ?: return
-
-                apiReview.addReview1(
-                    user_id = user.userId,
-                    contents = contents.toRequestBody(),
-                    torang_id = restaurantId,
+                reviewRepository.addReview(
+                    contents = contents,
+                    restaurantId = restaurantId,
                     rating = rating,
-                    file = filesToMultipart(files)
+                    files = files
                 )
             }
-
         }
     }
-}
-
-fun filesToMultipart(file: List<String>): ArrayList<MultipartBody.Part> {
-    val list = ArrayList<MultipartBody.Part>()
-        .apply {
-            addAll(
-                file.map {
-                    val file = File(it)
-                    MultipartBody.Part.createFormData(
-                        name = "file",
-                        filename = file.name,
-                        body = file.asRequestBody()
-                    )
-                }
-            )
-        }
-    return list
 }
