@@ -1,5 +1,6 @@
 package com.sryang.addreview.di.addreview_di
 
+import com.sarang.torang.BuildConfig
 import com.sryang.addreview.data.SelectRestaurantData
 import com.sryang.addreview.uistate.AddReviewUiState
 import com.sryang.addreview.uistate.Picture
@@ -20,7 +21,7 @@ fun RemoteFeed.toAddReviewUiSteate(): AddReviewUiState {
         list = this.pictures.map {
             Picture(
                 pictureId = it.picture_id,
-                url = com.sryang.addreview.BuildConfig.REVIEW_IMAGE_SERVER_URL + it.picture_url,
+                url = BuildConfig.REVIEW_IMAGE_SERVER_URL + it.picture_url,
                 isUploaded = true
             )
         },
