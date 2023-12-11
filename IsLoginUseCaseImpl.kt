@@ -13,7 +13,7 @@ import kotlinx.coroutines.flow.map
 @Module
 class IsLoginUseCaseImpl {
     @Provides
-    fun ProvideIsLoginUsecase(
+    fun provideIsLoginUseCase(
         loggedInUserDao: LoggedInUserDao
     ): IsLoginUseCase {
         return object : IsLoginUseCase {
