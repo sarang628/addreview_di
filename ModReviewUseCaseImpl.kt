@@ -2,11 +2,11 @@ package com.sryang.addreview.di.addreview_di
 
 import com.sryang.addreview.uistate.Picture
 import com.sryang.addreview.usecase.ModReviewUseCase
-import com.sryang.torang_repository.api.ApiReview
-import com.sryang.torang_repository.data.dao.LoggedInUserDao
-import com.sryang.torang_repository.data.dao.PictureDao
-import com.sryang.torang_repository.data.dao.ReviewDao
-import com.sryang.torang_repository.repository.ReviewRepository
+import com.sarang.torang.api.ApiReview
+import com.sarang.torang.data.dao.LoggedInUserDao
+import com.sarang.torang.data.dao.PictureDao
+import com.sarang.torang.data.dao.ReviewDao
+import com.sarang.torang.repository.ReviewRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

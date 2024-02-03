@@ -4,10 +4,10 @@ import android.net.http.HttpException
 import com.sryang.addreview.data.SelectRestaurantData
 import com.sryang.addreview.uistate.AddReviewUiState
 import com.sryang.addreview.usecase.GetReviewUseCase
-import com.sryang.torang_repository.api.ApiRestaurant
-import com.sryang.torang_repository.api.ApiReview
-import com.sryang.torang_repository.api.handle
-import com.sryang.torang_repository.data.Filter
+import com.sarang.torang.api.ApiRestaurant
+import com.sarang.torang.api.ApiReview
+import com.sarang.torang.api.handle
+import com.sarang.torang.data.Filter
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

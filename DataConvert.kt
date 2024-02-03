@@ -4,8 +4,8 @@ import com.sarang.torang.BuildConfig
 import com.sryang.addreview.data.SelectRestaurantData
 import com.sryang.addreview.uistate.AddReviewUiState
 import com.sryang.addreview.uistate.Picture
-import com.sryang.torang_repository.data.remote.response.RemoteFeed
-import com.sryang.torang_repository.data.remote.response.RemoteRestaurant
+import com.sarang.torang.data.remote.response.RemoteFeed
+import com.sarang.torang.data.remote.response.RemoteRestaurant
 
 fun RemoteRestaurant.toSelectRestaurantData(): SelectRestaurantData {
     return SelectRestaurantData(
