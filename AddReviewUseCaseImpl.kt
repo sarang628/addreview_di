@@ -1,19 +1,11 @@
-package com.sryang.addreview.di.addreview_di
+package com.sarang.torang.di.addreview_di
 
-import com.sryang.addreview.usecase.AddReviewUseCase
-import com.sarang.torang.api.ApiReview
-import com.sarang.torang.data.dao.LoggedInUserDao
-import com.sarang.torang.repository.ReviewRepository
+import com.sarang.torang.addreview.usecase.AddReviewUseCase
+import com.sarang.torang.repository.review.ReviewRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import okhttp3.MediaType.Companion.toMediaTypeOrNull
-import okhttp3.MultipartBody
-import okhttp3.RequestBody
-import okhttp3.RequestBody.Companion.asRequestBody
-import okhttp3.RequestBody.Companion.toRequestBody
-import java.io.File
 
 @InstallIn(SingletonComponent::class)
 @Module
@@ -25,7 +17,7 @@ class AddReviewUseCaseImpl {
         return object : AddReviewUseCase {
             override suspend fun invoke(
                 contents: String,
-                restaurantId: Int,
+                restaurantId: Int?,
                 rating: Float,
                 files: List<String>
             ) {

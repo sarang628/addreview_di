@@ -1,6 +1,6 @@
-package com.sryang.addreview.di.addreview_di
+package com.sarang.torang.di.addreview_di
 
-import com.sryang.addreview.usecase.IsLoginUseCase
+import com.sarang.torang.addreview.usecase.IsLoginUseCase
 import com.sarang.torang.data.dao.LoggedInUserDao
 import dagger.Module
 import dagger.Provides

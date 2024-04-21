@@ -1,7 +1,7 @@
-package com.sryang.addreview.di.addreview_di
+package com.sarang.torang.di.addreview_di
 
-import com.sryang.addreview.data.SelectRestaurantData
-import com.sryang.addreview.usecase.SelectRestaurantUseCase
+import com.sarang.torang.addreview.data.SelectRestaurantData
+import com.sarang.torang.addreview.usecase.SelectRestaurantUseCase
 import com.sarang.torang.api.ApiRestaurant
 import com.sarang.torang.data.Filter
 import dagger.Module

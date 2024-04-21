@@ -1,9 +1,9 @@
-package com.sryang.addreview.di.addreview_di
+package com.sarang.torang.di.addreview_di
 
 import com.sarang.torang.BuildConfig
-import com.sryang.addreview.data.SelectRestaurantData
-import com.sryang.addreview.uistate.AddReviewUiState
-import com.sryang.addreview.uistate.Picture
+import com.sarang.torang.addreview.data.SelectRestaurantData
+import com.sarang.torang.addreview.uistate.AddReviewUiState
+import com.sarang.torang.addreview.uistate.Picture
 import com.sarang.torang.data.remote.response.RemoteFeed
 import com.sarang.torang.data.remote.response.RemoteRestaurant
 
