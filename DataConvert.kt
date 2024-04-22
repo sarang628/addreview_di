@@ -31,6 +31,7 @@ fun RemoteFeed.toAddReviewUiSteate(): AddReviewUiState {
             restaurantName = this.restaurant.restaurantName,
             address = this.restaurant.address
         ),
-        isLoading = false
+        isLoading = false,
+        rating = rating
     )
 }
