@@ -4,10 +4,10 @@ import com.sarang.torang.BuildConfig
 import com.sarang.torang.addreview.data.SelectRestaurantData
 import com.sarang.torang.addreview.uistate.AddReviewUiState
 import com.sarang.torang.addreview.uistate.Picture
-import com.sarang.torang.data.remote.response.RemoteFeed
-import com.sarang.torang.data.remote.response.RemoteRestaurant
+import com.sarang.torang.data.remote.response.FeedApiModel
+import com.sarang.torang.data.remote.response.RestaurantApiModel
 
-fun RemoteRestaurant.toSelectRestaurantData(): SelectRestaurantData {
+fun RestaurantApiModel.toSelectRestaurantData(): SelectRestaurantData {
     return SelectRestaurantData(
         restaurantId = this.restaurantId,
         restaurantName = this.restaurantName,
@@ -15,7 +15,7 @@ fun RemoteRestaurant.toSelectRestaurantData(): SelectRestaurantData {
     )
 }
 
-fun RemoteFeed.toAddReviewUiSteate(): AddReviewUiState {
+fun FeedApiModel.toAddReviewUiSteate(): AddReviewUiState {
     return AddReviewUiState(
         reviewId = this.reviewId,
         list = this.pictures.map {
