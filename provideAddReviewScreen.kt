@@ -20,6 +20,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.compose.rememberNavController
+import com.example.instagramgallery.di.Instagramgallery_di.GalleryWithPhotoPicker
 import com.sarang.torang.RootNavController
 import com.sarang.torang.addreview.compose.AddReviewScreen
 
@@ -29,35 +30,22 @@ fun provideAddReviewScreen(navHostController: RootNavController): @Composable (o
     { onCloseReview ->
         val navController = rememberNavController()
         val dispatch = LocalOnBackPressedDispatcherOwner.current?.onBackPressedDispatcher
-        AddReviewScreen(
-            galleryScreen = { color, onNext, onClose ->
-                Scaffold(
-                    topBar = { TopAppBar(title = {}, navigationIcon = { IconButton({ onClose.invoke(null) }) { Icon(Icons.AutoMirrored.Default.ArrowBack, "") } }) }
-                ) {
-                    Box(
-                        Modifier
-                            .fillMaxSize()
-                            .padding(it)
-                    ) {
-                        Text(
-                            modifier = Modifier
-                                .align(Alignment.Center)
-                                .padding(16.dp),
-                            text = "구글 정책상 사진에 직접 접근할 수 없어, 업로드 기능은 현재 이용이 불가 합니다.."
-                        )
-                    }
-                }
-                /*GalleryNavHost(onNext = onNext, onClose = { onClose.invoke(null) }, onBack = { onClose.invoke(null) })*/
-            },
-            navController = navController,
-            onRestaurant = { navController.navigate("addReview") },
-            onShared = { navHostController.popBackStack() },
-            onNext = { navController.navigate("selectRestaurant") },
-            onClose = { onCloseReview.invoke() },
-            onNotSelected = { navController.navigate("addReview") },
-            onBack = {
-                dispatch?.onBackPressed()
-            },
-            onLogin = { navHostController.emailLogin() }
-        )
+        Scaffold {
+            Box(Modifier.fillMaxSize().padding(it)) {
+                AddReviewScreen(
+                    galleryScreen = { color, onNext, onClose ->
+                        GalleryWithPhotoPicker(onNext = onNext, onClose = { onClose.invoke(null) })
+                        /*GalleryNavHost(onNext = onNext, onClose = { onClose.invoke(null) }, onBack = { onClose.invoke(null) })*/
+                    },
+                    navController = navController,
+                    onRestaurant = { navController.navigate("addReview") },
+                    onShared = { navHostController.popBackStack() },
+                    onNext = { navController.navigate("selectRestaurant") },
+                    onClose = { onCloseReview.invoke() },
+                    onNotSelected = { navController.navigate("addReview") },
+                    onBack = { dispatch?.onBackPressed() },
+                    onLogin = { navHostController.emailLogin() }
+                )
+            }
+        }
     }
