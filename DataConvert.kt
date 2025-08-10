@@ -5,13 +5,13 @@ import com.sarang.torang.addreview.data.SelectRestaurantData
 import com.sarang.torang.addreview.uistate.AddReviewUiState
 import com.sarang.torang.addreview.uistate.Picture
 import com.sarang.torang.data.remote.response.FeedApiModel
-import com.sarang.torang.data.remote.response.RestaurantApiModel
+import com.sarang.torang.data.remote.response.RestaurantResponseDto
 
-fun RestaurantApiModel.toSelectRestaurantData(): SelectRestaurantData {
+fun RestaurantResponseDto.toSelectRestaurantData(): SelectRestaurantData {
     return SelectRestaurantData(
-        restaurantId = this.restaurantId,
-        restaurantName = this.restaurantName,
-        address = this.address
+        restaurantId = this.restaurantId ?: -1,
+        restaurantName = this.restaurantName ?: "",
+        address = this.address ?: ""
     )
 }
 
@@ -27,9 +27,9 @@ fun FeedApiModel.toAddReviewUiSteate(): AddReviewUiState {
         },
         contents = this.contents,
         selectedRestaurant = SelectRestaurantData(
-            restaurantId = this.restaurant.restaurantId,
-            restaurantName = this.restaurant.restaurantName,
-            address = this.restaurant.address
+            restaurantId = this.restaurant.restaurantId ?: -1,
+            restaurantName = this.restaurant.restaurantName ?: "",
+            address = this.restaurant.address ?: ""
         ),
         isLoading = false,
         rating = rating
