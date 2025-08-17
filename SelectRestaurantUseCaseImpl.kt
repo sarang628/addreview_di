@@ -4,6 +4,7 @@ import com.sarang.torang.addreview.data.SelectRestaurantData
 import com.sarang.torang.addreview.usecase.SelectRestaurantUseCase
 import com.sarang.torang.api.ApiRestaurant
 import com.sarang.torang.data.Filter
+import com.sarang.torang.data.remote.response.FilterApiModel
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -16,7 +17,7 @@ class SelectRestaurantUseCaseImpl {
     fun provideSelectRestaurantService(apiRestaurant: ApiRestaurant): SelectRestaurantUseCase {
         return object : SelectRestaurantUseCase {
             override suspend fun invoke(keyword: String): List<SelectRestaurantData> {
-                val result = apiRestaurant.getFilterRestaurant(Filter(keyword = keyword))
+                val result = apiRestaurant.getFilterRestaurant(FilterApiModel(keyword = keyword))
                 return result.map { it.toSelectRestaurantData() }
             }
         }
