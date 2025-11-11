@@ -18,7 +18,7 @@ class IsLoginUseCaseImpl {
     ): IsLoginUseCase {
         return object : IsLoginUseCase {
             override val isLogin: Flow<Boolean>
-                get() = loggedInUserDao.getLoggedInUser().map {
+                get() = loggedInUserDao.getLoggedInUserFlow().map {
                     it != null
                 }
 
