@@ -21,19 +21,15 @@ fun provideAddReviewScreen(navHostController: RootNavController): @Composable (o
     { onCloseReview ->
         val navController = rememberNavController()
         val dispatch = LocalOnBackPressedDispatcherOwner.current?.onBackPressedDispatcher
-        Scaffold {
-            Box(Modifier.fillMaxSize().padding(it)) {
-                AddReviewScreen(
-                    galleryScreen = { color, onNext, onClose -> GalleryWithPhotoPicker(onNext = onNext, onClose = { onClose.invoke() }) },
-                    navController = navController,
-                    onRestaurant = { navController.navigate("addReview") },
-                    onShared = { navHostController.popBackStack() },
-                    onNext = { navController.navigate("selectRestaurant") },
-                    onClose = { onCloseReview.invoke() },
-                    onNotSelected = { navController.navigate("addReview") },
-                    onBack = { dispatch?.onBackPressed() },
-                    onLogin = { navHostController.emailLogin() }
-                )
-            }
-        }
+            AddReviewScreen(
+                galleryScreen = { color, onNext, onClose -> GalleryWithPhotoPicker(onNext = onNext, onClose = { onClose.invoke() }) },
+                navController = navController,
+                onRestaurant = { navController.navigate("addReview") },
+                onShared = { navHostController.popBackStack() },
+                onNext = { navController.navigate("selectRestaurant") },
+                onClose = { onCloseReview.invoke() },
+                onNotSelected = { navController.navigate("addReview") },
+                onBack = { dispatch?.onBackPressed() },
+                onLogin = { navHostController.emailLogin() }
+            )
     }
