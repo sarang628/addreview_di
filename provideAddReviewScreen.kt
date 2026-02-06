@@ -22,7 +22,7 @@ fun provideAddReviewScreen(navHostController: RootNavController): @Composable (o
         val navController = rememberNavController()
         val dispatch = LocalOnBackPressedDispatcherOwner.current?.onBackPressedDispatcher
             AddReviewScreen(
-                galleryScreen = { color, onNext, onClose -> GalleryWithPhotoPicker(onNext = onNext, onClose = { onClose.invoke() }) },
+                galleryScreen = { GalleryWithPhotoPicker(onNext = it.onNext, onClose = { it.onClose.invoke() }) },
                 navController = navController,
                 onRestaurant = { navController.navigate("addReview") },
                 onShared = { navHostController.popBackStack() },
