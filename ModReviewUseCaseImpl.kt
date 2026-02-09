@@ -1,5 +1,6 @@
 package com.sarang.torang.di.addreview_di
 
+import android.content.Context
 import com.sarang.torang.addreview.uistate.Picture
 import com.sarang.torang.addreview.usecase.ModReviewUseCase
 import com.sarang.torang.repository.review.ReviewRepository
@@ -22,7 +23,8 @@ class ModReviewUseCaseImpl {
                 restaurantId: Int,
                 rating: Float,
                 files: List<Picture>?,
-                uploadedImage: List<Int>?
+                uploadedImage: List<Int>?,
+                context: Context
             ) {
                 revoewRepository.updateReview(
                     reviewId = reviewId,
@@ -32,7 +34,8 @@ class ModReviewUseCaseImpl {
                     files = if (files != null)
                         files.filter { !it.isUploaded }.map { it.url }
                     else ArrayList(),
-                    uploadedImage = uploadedImage ?: ArrayList()
+                    uploadedImage = uploadedImage ?: ArrayList(),
+                    context = context
                 )
             }
         }

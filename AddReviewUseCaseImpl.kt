@@ -1,5 +1,6 @@
 package com.sarang.torang.di.addreview_di
 
+import android.content.Context
 import com.sarang.torang.addreview.usecase.AddReviewUseCase
 import com.sarang.torang.repository.review.ReviewRepository
 import dagger.Module
@@ -16,16 +17,18 @@ class AddReviewUseCaseImpl {
     ): AddReviewUseCase {
         return object : AddReviewUseCase {
             override suspend fun invoke(
-                contents: String,
-                restaurantId: Int?,
-                rating: Float,
-                files: List<String>
+                contents        : String,
+                restaurantId    : Int?,
+                rating          : Float,
+                files           : List<String>,
+                context         : Context
             ) {
                 reviewRepository.addReview(
-                    contents = contents,
-                    restaurantId = restaurantId,
-                    rating = rating,
-                    files = files
+                    contents        = contents,
+                    restaurantId    = restaurantId,
+                    rating          = rating,
+                    files           = files,
+                    context         = context
                 )
             }
         }
